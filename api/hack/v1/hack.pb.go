@@ -59,6 +59,50 @@ func (*Request) Descriptor() ([]byte, []int) {
 	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{0}
 }
 
+type Reply struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Reply) Reset() {
+	*x = Reply{}
+	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Reply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Reply) ProtoMessage() {}
+
+func (x *Reply) ProtoReflect() protoreflect.Message {
+	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Reply.ProtoReflect.Descriptor instead.
+func (*Reply) Descriptor() ([]byte, []int) {
+	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *Reply) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Code          int32                  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
@@ -70,7 +114,7 @@ type Response struct {
 
 func (x *Response) Reset() {
 	*x = Response{}
-	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
+	mi := &file_api_hack_v1_hack_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -82,7 +126,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
+	mi := &file_api_hack_v1_hack_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -95,7 +139,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{1}
+	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Response) GetCode() int32 {
@@ -124,7 +168,9 @@ var File_api_hack_v1_hack_proto protoreflect.FileDescriptor
 const file_api_hack_v1_hack_proto_rawDesc = "" +
 	"\n" +
 	"\x16api/hack/v1/hack.proto\x12\ahack.v1\x1a\x19google/protobuf/any.proto\x1a\x1cgoogle/api/annotations.proto\"\t\n" +
-	"\aRequest\"b\n" +
+	"\aRequest\"!\n" +
+	"\x05Reply\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"b\n" +
 	"\bResponse\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12(\n" +
@@ -144,16 +190,17 @@ func file_api_hack_v1_hack_proto_rawDescGZIP() []byte {
 	return file_api_hack_v1_hack_proto_rawDescData
 }
 
-var file_api_hack_v1_hack_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_api_hack_v1_hack_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_api_hack_v1_hack_proto_goTypes = []any{
 	(*Request)(nil),   // 0: hack.v1.Request
-	(*Response)(nil),  // 1: hack.v1.Response
-	(*anypb.Any)(nil), // 2: google.protobuf.Any
+	(*Reply)(nil),     // 1: hack.v1.Reply
+	(*Response)(nil),  // 2: hack.v1.Response
+	(*anypb.Any)(nil), // 3: google.protobuf.Any
 }
 var file_api_hack_v1_hack_proto_depIdxs = []int32{
-	2, // 0: hack.v1.Response.data:type_name -> google.protobuf.Any
+	3, // 0: hack.v1.Response.data:type_name -> google.protobuf.Any
 	0, // 1: hack.v1.Hack.Hello:input_type -> hack.v1.Request
-	1, // 2: hack.v1.Hack.Hello:output_type -> hack.v1.Response
+	2, // 2: hack.v1.Hack.Hello:output_type -> hack.v1.Response
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -172,7 +219,7 @@ func file_api_hack_v1_hack_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_hack_v1_hack_proto_rawDesc), len(file_api_hack_v1_hack_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
