@@ -5,9 +5,25 @@ package hack.v1;
 option go_package = "api/hack/v1;v1";
 
 import "google/protobuf/any.proto";
+import "google/api/annotations.proto";
+message Request {
+
+}
+
+
+
 
 message Response{
   int32 code = 1;
   string message = 2;
   google.protobuf.Any data = 3;
+}
+
+service Hack{
+  rpc Hello (Request) returns (Response){
+    option (google.api.http) = {
+      get: "/hello"
+    };
+  };
+
 }

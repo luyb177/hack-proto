@@ -7,6 +7,7 @@
 package v1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	anypb "google.golang.org/protobuf/types/known/anypb"
@@ -22,6 +23,42 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Request struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Request) Reset() {
+	*x = Request{}
+	mi := &file_api_hack_v1_hack_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Request) ProtoMessage() {}
+
+func (x *Request) ProtoReflect() protoreflect.Message {
+	mi := &file_api_hack_v1_hack_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Request.ProtoReflect.Descriptor instead.
+func (*Request) Descriptor() ([]byte, []int) {
+	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{0}
+}
+
 type Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Code          int32                  `protobuf:"varint,1,opt,name=code,proto3" json:"code,omitempty"`
@@ -33,7 +70,7 @@ type Response struct {
 
 func (x *Response) Reset() {
 	*x = Response{}
-	mi := &file_api_hack_v1_hack_proto_msgTypes[0]
+	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +82,7 @@ func (x *Response) String() string {
 func (*Response) ProtoMessage() {}
 
 func (x *Response) ProtoReflect() protoreflect.Message {
-	mi := &file_api_hack_v1_hack_proto_msgTypes[0]
+	mi := &file_api_hack_v1_hack_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +95,7 @@ func (x *Response) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Response.ProtoReflect.Descriptor instead.
 func (*Response) Descriptor() ([]byte, []int) {
-	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{0}
+	return file_api_hack_v1_hack_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Response) GetCode() int32 {
@@ -86,11 +123,14 @@ var File_api_hack_v1_hack_proto protoreflect.FileDescriptor
 
 const file_api_hack_v1_hack_proto_rawDesc = "" +
 	"\n" +
-	"\x16api/hack/v1/hack.proto\x12\ahack.v1\x1a\x19google/protobuf/any.proto\"b\n" +
+	"\x16api/hack/v1/hack.proto\x12\ahack.v1\x1a\x19google/protobuf/any.proto\x1a\x1cgoogle/api/annotations.proto\"\t\n" +
+	"\aRequest\"b\n" +
 	"\bResponse\x12\x12\n" +
 	"\x04code\x18\x01 \x01(\x05R\x04code\x12\x18\n" +
 	"\amessage\x18\x02 \x01(\tR\amessage\x12(\n" +
-	"\x04data\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x04dataB\x10Z\x0eapi/hack/v1;v1b\x06proto3"
+	"\x04data\x18\x03 \x01(\v2\x14.google.protobuf.AnyR\x04data2D\n" +
+	"\x04Hack\x12<\n" +
+	"\x05Hello\x12\x10.hack.v1.Request\x1a\x11.hack.v1.Response\"\x0e\x82\xd3\xe4\x93\x02\b\x12\x06/helloB\x10Z\x0eapi/hack/v1;v1b\x06proto3"
 
 var (
 	file_api_hack_v1_hack_proto_rawDescOnce sync.Once
@@ -104,15 +144,18 @@ func file_api_hack_v1_hack_proto_rawDescGZIP() []byte {
 	return file_api_hack_v1_hack_proto_rawDescData
 }
 
-var file_api_hack_v1_hack_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_api_hack_v1_hack_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_api_hack_v1_hack_proto_goTypes = []any{
-	(*Response)(nil),  // 0: hack.v1.Response
-	(*anypb.Any)(nil), // 1: google.protobuf.Any
+	(*Request)(nil),   // 0: hack.v1.Request
+	(*Response)(nil),  // 1: hack.v1.Response
+	(*anypb.Any)(nil), // 2: google.protobuf.Any
 }
 var file_api_hack_v1_hack_proto_depIdxs = []int32{
-	1, // 0: hack.v1.Response.data:type_name -> google.protobuf.Any
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
+	2, // 0: hack.v1.Response.data:type_name -> google.protobuf.Any
+	0, // 1: hack.v1.Hack.Hello:input_type -> hack.v1.Request
+	1, // 2: hack.v1.Hack.Hello:output_type -> hack.v1.Response
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -129,9 +172,9 @@ func file_api_hack_v1_hack_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_hack_v1_hack_proto_rawDesc), len(file_api_hack_v1_hack_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_api_hack_v1_hack_proto_goTypes,
 		DependencyIndexes: file_api_hack_v1_hack_proto_depIdxs,
